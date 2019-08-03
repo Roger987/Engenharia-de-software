@@ -31,7 +31,22 @@ public class Main {
 				
 				case 1:
 					
-					Cliente cliente;
+					System.out.println("Nome completo:\n");
+					String nome = scanner.nextLine();
+					
+					System.out.println("CPF:\n");
+					String cpf = scanner.nextLine();
+					
+					System.out.println("E-mail:\n");
+					String email = scanner.nextLine();
+					
+					System.out.println("Informe o treino do cliente:\n");
+					String treino = scanner.nextLine();
+					
+					Cliente cliente = new Cliente(nome, cpf, email, treino, false);
+					
+					System.out.println("\nCliente adicionado com sucesso!\n");
+					
 					break;
 					
 				
