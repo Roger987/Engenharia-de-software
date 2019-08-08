@@ -40,15 +40,46 @@ public class Main {
 					System.out.println("E-mail:\n");
 					String email = scanner.nextLine();
 					
-					System.out.println("Informe o treino do cliente:\n");
+					System.out.println("Peso:\n");
+					float peso = scanner.nextFloat();
+					
+					System.out.println("Altura:\n");
+					float altura = scanner.nextFloat();
+					
+					System.out.println("Informe a rotina do cliente:\n");
 					String treino = scanner.nextLine();
 					
-					Cliente cliente = new Cliente(nome, cpf, email, treino, false);
+					Cliente cliente = new Cliente(nome, cpf, email, peso, altura, treino, false);
+					
+					clientes.add(cliente);
 					
 					System.out.println("\nCliente adicionado com sucesso!\n");
 					
 					break;
 					
+				case 2:
+					
+					System.out.println("Nome completo:\n");
+					nome = scanner.nextLine();
+					
+					System.out.println("CPF:\n");
+					cpf = scanner.nextLine();
+					
+					System.out.println("E-mail:\n");
+					email = scanner.nextLine();
+					
+					System.out.println("Cargo exercido:\n");
+					String cargo = scanner.nextLine();
+					
+					System.out.println("Informe o salário do funcionário:\n");
+					float salario = scanner.nextFloat();
+					
+					Funcionario funcionario = new Funcionario(nome, cpf, email, cargo, salario, false);
+					
+					funcionarios.add(funcionario);
+					
+					System.out.println("Funcionário adicionado!\n");
+
 				
 				}
 				
