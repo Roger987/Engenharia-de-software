@@ -41,24 +41,9 @@ public class Main {
 					
 				case 2:
 					
-					System.out.println("Nome completo:\n");
-					String nome = scanner.nextLine();
+					Funcionario funcionario = new Funcionario();
 					
-					System.out.println("CPF:\n");
-					String cpf = scanner.nextLine();
-					
-					System.out.println("E-mail:\n");
-					String email = scanner.nextLine();
-					
-					System.out.println("Cargo exercido:\n");
-					String cargo = scanner.nextLine();
-					
-					System.out.println("Informe o salário do funcionário:\n");
-					float salario = scanner.nextFloat();
-					
-					Funcionario funcionario = new Funcionario(nome, cpf, email, cargo, salario, false);
-					
-					funcionarios.add(funcionario);
+					funcionario.addFuncionario(funcionarios, funcionario);
 					
 					System.out.println("Funcionário adicionado!\n");
 					
