@@ -13,7 +13,7 @@ public class Main {
 		ArrayList<Equipamento> equipamentos = new ArrayList<Equipamento>();
 	
 		System.out.println("\nBem-vindo!\nDigite a operação desejada:\n"
-				+ " 1 - Adicionar cliente\n 2 - Adicionar equipamento\n 3 - Adicionar funcionário\n 0 - Sair\n");
+				+ " 1 - Adicionar cliente\n 2 - Adicionar funcionário\n 3 - Adicionar equipamento\n 0 - Sair\n");
 		
 		while(input != 0) {
 			
@@ -62,7 +62,7 @@ public class Main {
 				scanner.nextLine();
 				System.out.println("\nOps! Parece que aconteceu um erro!\n");
 				System.out.println("\nDigite a operação desejada:\n"
-					+ " 1 - Adicionar cliente\n 2 - Adicionar equipamento\n 3 - Adicionar funcionário\n 0 - Sair\n");
+					+ " 1 - Adicionar cliente\n 2 - Adicionar funcionário\n 3 - Adicionar equipamento\n 0 - Sair\n");
 
 			}
 			
