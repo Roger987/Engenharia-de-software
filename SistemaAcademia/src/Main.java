@@ -51,7 +51,13 @@ public class Main {
 					
 				case 3:
 					
-
+					Equipamento equipamento = new Equipamento();
+					
+					equipamento.addEquipamento(equipamentos, equipamento);
+					
+					System.out.println("Equipamento adicionado!");
+					
+					break;
 				
 				}
 				
