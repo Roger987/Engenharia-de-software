@@ -31,27 +31,9 @@ public class Main {
 				
 				case 1:
 					
-					System.out.println("Nome completo:\n");
-					String nome = scanner.nextLine();
+					Cliente cliente = new Cliente();
 					
-					System.out.println("CPF:\n");
-					String cpf = scanner.nextLine();
-					
-					System.out.println("E-mail:\n");
-					String email = scanner.nextLine();
-					
-					System.out.println("Peso:\n");
-					float peso = scanner.nextFloat();
-					
-					System.out.println("Altura:\n");
-					float altura = scanner.nextFloat();
-					
-					System.out.println("Informe a rotina do cliente:\n");
-					String treino = scanner.nextLine();
-					
-					Cliente cliente = new Cliente(nome, cpf, email, peso, altura, treino, false);
-					
-					clientes.add(cliente);
+					cliente.addCliente(clientes, cliente);
 					
 					System.out.println("\nCliente adicionado com sucesso!\n");
 					
@@ -60,13 +42,13 @@ public class Main {
 				case 2:
 					
 					System.out.println("Nome completo:\n");
-					nome = scanner.nextLine();
+					String nome = scanner.nextLine();
 					
 					System.out.println("CPF:\n");
-					cpf = scanner.nextLine();
+					String cpf = scanner.nextLine();
 					
 					System.out.println("E-mail:\n");
-					email = scanner.nextLine();
+					String email = scanner.nextLine();
 					
 					System.out.println("Cargo exercido:\n");
 					String cargo = scanner.nextLine();
@@ -79,6 +61,11 @@ public class Main {
 					funcionarios.add(funcionario);
 					
 					System.out.println("Funcionário adicionado!\n");
+					
+					break;
+					
+				case 3:
+					
 
 				
 				}
