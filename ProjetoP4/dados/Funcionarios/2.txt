@@ -1,0 +1,6 @@
+Nome: roger
+cpf: 2
+Email: 2
+Cargo: 2
+Salario: 2.0
+Pagamento: 0

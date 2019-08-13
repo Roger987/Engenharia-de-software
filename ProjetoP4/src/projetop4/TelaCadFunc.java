@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,8 +154,12 @@ public class TelaCadFunc extends javax.swing.JInternalFrame {
         if(nome.getText() != null && cpf.getText() != null && email.getText() != null  && cargo.getText() != null && salario.getText() != null){
             File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionario\\" + cpf.getText() + ".txt");
             if(!filetxt.exists()){
-                Funcionario func = new Funcionario(nome.getText(), cpf.getText(), email.getText(), cargo.getText(), Float.parseFloat(salario.getText()));
-                func.addFuncionario(funcionarios, func);
+                Funcionario func = new Funcionario(nome.getText(), cpf.getText(), email.getText(), cargo.getText(), Float.parseFloat(salario.getText()), 0);
+                try {
+                    func.addFuncionario(funcionarios, func);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaCadFunc.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 this.dispose();
             }
             else{

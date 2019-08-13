@@ -1,0 +1,6 @@
+Nome: aldemir
+cpf: 1
+Email: 1
+Cargo: 1
+Salario: 1.0
+Pagamento: 0

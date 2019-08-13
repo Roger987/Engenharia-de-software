@@ -1,5 +1,8 @@
 package projetop4;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -127,6 +130,13 @@ public class TelaLogin extends javax.swing.JFrame {
             int opcao = -1;
             JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!!!");
             TelaMenu menu = new TelaMenu();
+            try {
+                menu.atualizarclientes();
+                menu.atualizarfuncionarios();
+                menu.atualizarequipamentos();
+            } catch (IOException ex) {
+                Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
             menu.setVisible(true);
             this.dispose();
         }

@@ -1,6 +1,9 @@
 package projetop4;
+import java.io.BufferedReader;
 import java.util.*;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,32 +18,45 @@ public class Cliente {
     private String treino;
     private float peso;
     private float altura;
-    private boolean pagamento;
+    private int pagamento;
 
-    public Cliente(String nome, String cpf, String email, float peso, float altura, String treino) {
+    public Cliente(String nome, String cpf, String email, float peso, float altura, String treino, int pagamento) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.peso = peso;
         this.altura = altura;
         this.treino = treino;
-        this.pagamento = false;
+        this.pagamento = pagamento;
     }
     
-    public void addCliente(ArrayList<Cliente> clientes, Cliente cliente) {
-        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + cliente.getCpf() + ".txt");
-        Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + cliente.getCpf() + ".txt");
-
+    public void addCliente(ArrayList<Cliente> clientes, Cliente cliente) throws FileNotFoundException, IOException {
+        String currentline;
+        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\Clientes.txt");
+        Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\Clientes.txt");
+        
+        FileReader fileReader = new FileReader(filetxt); //leitor de arq
+        BufferedReader cpf = new BufferedReader(fileReader); //leitor temporario
+        
         ArrayList<String> dados = new ArrayList<>();
-        dados.add("Nome: " + cliente.getNome());
-        dados.add("cpf: " + cliente.getCpf());
-        dados.add("Email: " + cliente.getNome());
-        dados.add("Peso: " + cliente.getPeso());
-        dados.add("Altura: " + cliente.getAltura());
-        dados.add("Treino: " + cliente.getTreino());
+        while ((currentline = cpf.readLine()) != null) {
+            dados.add(currentline);
+        }
+        dados.add(cliente.getCpf());
+        Files.write(caminho, dados);
+        
+        ArrayList<String> dados1 = new ArrayList<>();
+        dados1.add("Nome: " + cliente.getNome());
+        dados1.add("cpf: " + cliente.getCpf());
+        dados1.add("Email: " + cliente.getEmail());
+        dados1.add("Peso: " + cliente.getPeso());
+        dados1.add("Altura: " + cliente.getAltura());
+        dados1.add("Treino: " + cliente.getTreino());
+        dados1.add("Pagamento: " + cliente.getPagamento());
 
+        Path caminho2 = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + cliente.getCpf() + ".txt");
         try {
-            Files.write(caminho, dados);
+            Files.write(caminho2, dados1);
         } catch (IOException ex) {
             System.out.println("Error reading file '" + filetxt + "'");
         }
@@ -96,11 +112,11 @@ public class Cliente {
         this.altura = altura;
     }
 
-    public boolean isPagamento() {
+    public int getPagamento() {
         return pagamento;
     }
 
-    public void setPagamento(boolean pagamento) {
+    public void setPagamento(int pagamento) {
         this.pagamento = pagamento;
     }
 }

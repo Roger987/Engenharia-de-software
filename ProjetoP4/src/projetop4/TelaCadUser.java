@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -184,8 +186,12 @@ public class TelaCadUser extends javax.swing.JInternalFrame {
         if(nome.getText() != null && cpf.getText() != null && email.getText() != null  && peso.getText() != null && altura.getText() != null && rotina.getText() != null){
            File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + cpf.getText() + ".txt");
            if(!filetxt.exists()){
-                Cliente cliente = new Cliente(nome.getText(), cpf.getText(), email.getText(), Float.parseFloat(peso.getText()), Float.parseFloat(altura.getText()), rotina.getText());
-                cliente.addCliente(clientes, cliente);
+                Cliente cliente = new Cliente(nome.getText(), cpf.getText(), email.getText(), Float.parseFloat(peso.getText()), Float.parseFloat(altura.getText()), rotina.getText(), 0);
+               try {
+                   cliente.addCliente(clientes, cliente);
+               } catch (IOException ex) {
+                   Logger.getLogger(TelaCadUser.class.getName()).log(Level.SEVERE, null, ex);
+               }
                 this.dispose();
             }
            else{

@@ -1,0 +1,7 @@
+Nome: 2
+cpf: 2
+Email: 2
+Peso: 2.0
+Altura: 2.0
+Treino: 2
+Pagamento: 0

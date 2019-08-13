@@ -1,0 +1,3 @@
+Código do equipamento: 2
+Especificações do equipamento: vermelho
+Disponibilidade: 1

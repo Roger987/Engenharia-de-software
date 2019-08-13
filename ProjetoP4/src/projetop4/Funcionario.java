@@ -1,6 +1,9 @@
 package projetop4;
+import java.io.BufferedReader;
 import java.util.*;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,30 +17,43 @@ public class Funcionario {
     private String email;
     public String cargo;
     private float salario;
-    private boolean pagamento;
+    private int pagamento;
 
-    public Funcionario(String nome, String cpf, String email, String cargo, float salario) {
+    public Funcionario(String nome, String cpf, String email, String cargo, float salario, int pagamento) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.cargo = cargo;
         this.salario = salario;
-        this.pagamento = false;
+        this.pagamento = 0;
     }
     
-    public void addFuncionario(ArrayList<Funcionario> funcionarios, Funcionario func) {
-        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\" + func.getCpf() + ".txt");
-        Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\" + func.getCpf() + ".txt");
-
+    public void addFuncionario(ArrayList<Funcionario> funcionarios, Funcionario func) throws FileNotFoundException, IOException {
+        String currentline;
+        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\Funcionarios.txt");
+        Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\Funcionarios.txt");
+        
+        FileReader fileReader = new FileReader(filetxt); //leitor de arq
+        BufferedReader cpf = new BufferedReader(fileReader); //leitor temporario
+        
         ArrayList<String> dados = new ArrayList<>();
-        dados.add("Nome: " + func.getNome());
-        dados.add("cpf: " + func.getCpf());
-        dados.add("Email: " + func.getEmail());
-        dados.add("Cargo: " + func.getCargo());
-        dados.add("Salario: " + func.getSalario());
+        while ((currentline = cpf.readLine()) != null) {
+            dados.add(currentline);
+        }
+        dados.add(func.getCpf());
+        Files.write(caminho, dados);
+        
+        ArrayList<String> dados1 = new ArrayList<>();
+        dados1.add("Nome: " + func.getNome());
+        dados1.add("cpf: " + func.getCpf());
+        dados1.add("Email: " + func.getEmail());
+        dados1.add("Cargo: " + func.getCargo());
+        dados1.add("Salario: " + func.getSalario());
+        dados1.add("Pagamento: " + func.getPagamento());
 
+        Path caminho2 = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\" + func.getCpf() + ".txt");
         try {
-            Files.write(caminho, dados);
+            Files.write(caminho2, dados1);
         } catch (IOException ex) {
             System.out.println("Error reading file '" + filetxt + "'");
         }
@@ -85,11 +101,11 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public boolean isPagamento() {
+    public int getPagamento() {
         return pagamento;
     }
 
-    public void setPagamento(boolean pagamento) {
+    public void setPagamento(int pagamento) {
         this.pagamento = pagamento;
     }
     

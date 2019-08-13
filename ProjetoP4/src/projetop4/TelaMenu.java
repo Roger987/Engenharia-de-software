@@ -5,6 +5,13 @@
  */
 package projetop4;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -394,4 +401,181 @@ public class TelaMenu extends javax.swing.JFrame {
     ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
     ArrayList<Equipamento> equipamentos = new ArrayList<Equipamento>();
+    
+    public void atualizarclientes() throws FileNotFoundException, IOException {
+        String currentline, currentline2;
+        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\Clientes.txt");
+        //Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\Clientes.txt");
+
+        FileReader fileReader = new FileReader(filetxt); //leitor de arq
+        BufferedReader cpf1 = new BufferedReader(fileReader); //leitor temporario
+        
+        String nome = null, cpf = null, email = null, peso = null, altura = null, treino = null, pagamento = null;
+        while ((currentline = cpf1.readLine()) != null) {
+            File filetxt2 = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + currentline + ".txt");
+            //Path caminho2 = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + currentline + ".txt");
+
+            FileReader fileReader2 = new FileReader(filetxt2); //leitor de arq
+            BufferedReader cpf2 = new BufferedReader(fileReader2); //leitor temporario
+            
+            while ((currentline2 = cpf2.readLine()) != null) {
+                if(currentline2.contains("Nome: ")){
+                   nome = currentline2.substring(6);
+                   //System.out.println(nome);
+                }
+                if(currentline2.contains("cpf: ")){
+                   cpf = currentline2.substring(5);
+                   //System.out.println(cpf);
+                }
+                if(currentline2.contains("Email: ")){
+                   email = currentline2.substring(7);
+                   //System.out.println(email);
+                }
+                if(currentline2.contains("Peso: ")){
+                   peso = currentline2.substring(6);
+                   //System.out.println(peso);
+                }
+                if(currentline2.contains("Altura: ")){
+                   altura = currentline2.substring(8);
+                   //System.out.println(altura);
+                }
+                if(currentline2.contains("Treino: ")){
+                   treino = currentline2.substring(8);
+                   //System.out.println(treino);
+                }
+                if(currentline2.contains("Pagamento: ")){
+                   pagamento = currentline2.substring(11);
+                   //System.out.println(pagamento);
+                }
+            }
+            Cliente cliente = new Cliente(nome, cpf, email, Float.parseFloat(peso), Float.parseFloat(altura), treino, Integer.parseInt(pagamento));
+            clientes.add(cliente);
+        }/*
+        if(clientes.size() != 0){
+            int i;
+            for(i = 0; i < clientes.size(); i++){
+                System.out.println(clientes.get(i).getNome());
+            }
+        }*/
+    }
+    
+    public void atualizarfuncionarios() throws FileNotFoundException, IOException {
+        String currentline, currentline2;
+        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\Funcionarios.txt");
+        //Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\Clientes.txt");
+
+        FileReader fileReader = new FileReader(filetxt); //leitor de arq
+        BufferedReader cpf1 = new BufferedReader(fileReader); //leitor temporario
+        
+        String nome = null, cpf = null, email = null, cargo = null, salario = null, pagamento = null;
+        while ((currentline = cpf1.readLine()) != null) {
+            File filetxt2 = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Funcionarios\\" + currentline + ".txt");
+            //Path caminho2 = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + currentline + ".txt");
+
+            FileReader fileReader2 = new FileReader(filetxt2); //leitor de arq
+            BufferedReader cpf2 = new BufferedReader(fileReader2); //leitor temporario
+            
+            while ((currentline2 = cpf2.readLine()) != null) {
+                if(currentline2.contains("Nome: ")){
+                   nome = currentline2.substring(6);
+                  // System.out.println(nome);
+                }
+                if(currentline2.contains("cpf: ")){
+                   cpf = currentline2.substring(5);
+                   //System.out.println(cpf);
+                }
+                if(currentline2.contains("Email: ")){
+                   email = currentline2.substring(7);
+                   //System.out.println(email);
+                }
+                if(currentline2.contains("Cargo: ")){
+                   cargo = currentline2.substring(7);
+                   //System.out.println(cargo);
+                }
+                if(currentline2.contains("Salario: ")){
+                   salario = currentline2.substring(9);
+                   //System.out.println(salario);
+                }
+                if(currentline2.contains("Pagamento: ")){
+                   pagamento = currentline2.substring(11);
+                   //System.out.println(pagamento);
+                }
+            }
+            Funcionario func = new Funcionario(nome, cpf, email, cargo, Float.parseFloat(salario), Integer.parseInt(pagamento));
+            funcionarios.add(func);
+        }/*
+        if(funcionarios.size() != 0){
+            int i;
+            for(i = 0; i < funcionarios.size(); i++){
+                System.out.println(funcionarios.get(i).getNome());
+            }
+        }*/
+    }
+    
+    public void atualizarequipamentos() throws FileNotFoundException, IOException {
+        String currentline, currentline2;
+        File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Equipamentos\\Equipamentos.txt");
+        //Path caminho = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\Clientes.txt");
+
+        FileReader fileReader = new FileReader(filetxt); //leitor de arq
+        BufferedReader codigo1 = new BufferedReader(fileReader); //leitor temporario
+        
+        String codigo = null, descricao = null, disponibilidade = null;
+        while ((currentline = codigo1.readLine()) != null) {
+            File filetxt2 = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Equipamentos\\" + currentline + ".txt");
+            //Path caminho2 = Paths.get("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Clientes\\" + currentline + ".txt");
+
+            FileReader fileReader2 = new FileReader(filetxt2); //leitor de arq
+            BufferedReader codigo2 = new BufferedReader(fileReader2); //leitor temporario
+            
+            while ((currentline2 = codigo2.readLine()) != null) {
+                if(currentline2.contains("Código do equipamento: ")){
+                   codigo = currentline2.substring(23);
+                   //System.out.println(codigo);
+                }
+                if(currentline2.contains("Especificações do equipamento: ")){
+                   descricao = currentline2.substring(31);
+                   //System.out.println(descricao);
+                }
+                if(currentline2.contains("Disponibilidade: ")){
+                   disponibilidade = currentline2.substring(17);
+                   //System.out.println(disponibilidade);
+                }
+            }
+            Equipamento equip = new Equipamento(Integer.parseInt(codigo), descricao, Integer.parseInt(disponibilidade));
+            equipamentos.add(equip);
+        }/*
+        if(equipamentos.size() != 0){
+            int i;
+            for(i = 0; i < equipamentos.size(); i++){
+                System.out.println(equipamentos.get(i).getCodigo());
+            }
+        }*/
+    }
+    
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public ArrayList<Equipamento> getEquipamentos() {
+        return equipamentos;
+    }
+
+    public void setEquipamentos(ArrayList<Equipamento> equipamentos) {
+        this.equipamentos = equipamentos;
+    }
+    
+    
 }

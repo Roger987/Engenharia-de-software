@@ -1,0 +1,6 @@
+Nome: maria
+cpf: 3
+Email: 3
+Cargo: 3
+Salario: 3.0
+Pagamento: 0

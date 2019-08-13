@@ -6,7 +6,10 @@
 package projetop4;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -119,8 +122,12 @@ public class TelaCadEquip extends javax.swing.JInternalFrame {
         if(codigo.getText() != null && descricao.getText() != null){
             File filetxt = new File("C:\\Users\\Aldemir Filho\\Documents\\NetBeansProjects\\ProjetoP4\\dados\\Equipamento\\" + codigo.getText() + ".txt");
             if(!filetxt.exists()){
-                Equipamento equip = new Equipamento(Integer.parseInt(codigo.getText()), descricao.getText());
-                equip.addEquipamento(equipamentos, equip);
+                Equipamento equip = new Equipamento(Integer.parseInt(codigo.getText()), descricao.getText(), 0);
+                try {
+                    equip.addEquipamento(equipamentos, equip);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaCadEquip.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 this.dispose();
             }
             else{
